@@ -21,7 +21,7 @@
     "jssha": "^2.3.1",
     "log4js": "^6.3.0",
     "sinon": "^9.2.2",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "tapyrusjs-lib": "git+https://github.com/chaintope/tapyrusjs-lib.git",
     "ws": "^7.4.1",
     "wss": "^3.3.4"
