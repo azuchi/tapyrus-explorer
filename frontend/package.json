@@ -28,7 +28,7 @@
     "@techiediaries/ngx-qrcode": "^9.1.0",
     "big.js": "^6.0.3",
     "core-js": "^2.6.12",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.6.3",
     "tslib": "^1.14.1",
