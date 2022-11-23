@@ -21,7 +21,7 @@
     "log4js": "^6.3.0",
     "node-fetch": "^2.6.1",
     "sinon": "^9.2.2",
-    "socket.io": "^2.4.1",
+    "socket.io": "^2.5.0",
     "tapyrusjs-lib": "git+https://github.com/chaintope/tapyrusjs-lib.git",
     "ws": "^7.4.6",
     "wss": "^3.3.4"
