@@ -111,4 +111,9 @@ export class AddressPage implements OnInit {
       '000000000000000000000000000000000000000000000000000000000000000000'
     );
   }
+
+  isIssue(tx, colorId: string): boolean {
+    // Issue if no input has the same colorId
+    return !tx.vin.some(input => input.prevout?.colorId === colorId);
+  }
 }

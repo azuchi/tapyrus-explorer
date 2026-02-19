@@ -197,6 +197,11 @@
                 class="ion-margin-bottom link-color cursor-pointer font-14 ellipsis"
                 (click)="goToCoin(output.colorId)"
               >
+                <ion-badge
+                  [color]="isIssue(tx, output.colorId) ? 'success' : 'secondary'"
+                  class="operation-badge"
+                  >{{ isIssue(tx, output.colorId) ? 'ISSUE' : 'TRANSFER' }}</ion-badge
+                >
                 Color ID: {{ output.colorId | formatColorId }}
               </ion-col>
             </ion-row>
