@@ -5,6 +5,7 @@ import { NavController, ToastController } from '@ionic/angular';
 import { BackendService } from '../backend.service';
 import { AppConst } from '../app.const';
 import Helper from '../app.helper';
+import { TokenOperationService } from '../services/token-operation.service';
 
 @Component({
   selector: 'app-address',
@@ -37,7 +38,8 @@ export class AddressPage implements OnInit {
     private navCtrl: NavController,
     private toastController: ToastController,
     private backendService: BackendService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public tokenOp: TokenOperationService
   ) {}
 
   ngOnInit() {
@@ -110,10 +112,5 @@ export class AddressPage implements OnInit {
       colorId !==
       '000000000000000000000000000000000000000000000000000000000000000000'
     );
-  }
-
-  isIssue(tx, colorId: string): boolean {
-    // Issue if no input has the same colorId
-    return !tx.vin.some(input => input.prevout?.colorId === colorId);
   }
 }

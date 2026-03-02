@@ -14,6 +14,7 @@ import {
 import { TransactionRawdataPage } from '../transaction-rawdata/transaction-rawdata.page';
 import { BackendService } from '../backend.service';
 import Helper from '../app.helper';
+import { TokenOperationService } from '../services/token-operation.service';
 
 @Component({
   selector: 'app-transaction',
@@ -41,7 +42,8 @@ export class TransactionPage implements OnInit, AfterViewChecked {
     private navCtrl: NavController,
     private backendService: BackendService,
     private toastController: ToastController,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public tokenOp: TokenOperationService
   ) {}
 
   ngOnInit() {
@@ -120,13 +122,6 @@ export class TransactionPage implements OnInit, AfterViewChecked {
 
   goToCoin(colorId) {
     this.navCtrl.navigateForward(`/color/${colorId}`);
-  }
-
-  isIssue(colorId: string): boolean {
-    // Issue if no input has the same colorId
-    return !this.transaction.vin?.some(
-      input => input.prevout?.colorId === colorId
-    );
   }
 
   goToBlock(hash: string) {

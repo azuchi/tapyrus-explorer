@@ -4,6 +4,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { BlockRawdataPage } from '../block-rawdata/block-rawdata.page';
 import { BackendService } from '../backend.service';
 import { AppConst } from '../app.const';
+import { TokenOperationService } from '../services/token-operation.service';
 
 @Component({
   selector: 'app-block',
@@ -33,7 +34,8 @@ export class BlockPage implements OnInit {
     private modalCtrl: ModalController,
     private navCtrl: NavController,
     private backendService: BackendService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public tokenOp: TokenOperationService
   ) {}
 
   ngOnInit() {
@@ -158,10 +160,6 @@ export class BlockPage implements OnInit {
 
   goToCoin(colorId) {
     this.navCtrl.navigateForward(`/color/${colorId}`);
-  }
-
-  isIssue(tx, colorId: string): boolean {
-    return !tx.vin?.some(input => input.prevout?.colorId === colorId);
   }
 
   goToTransaction(txid = '') {

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { BackendService } from '../backend.service';
+import { TokenOperationService } from '../services/token-operation.service';
 
 @Component({
   selector: 'app-color',
@@ -28,7 +29,8 @@ export class ColorPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private navCtrl: NavController,
     private backendService: BackendService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public tokenOp: TokenOperationService
   ) {}
 
   ngOnInit() {
@@ -92,9 +94,21 @@ export class ColorPage implements OnInit {
     this.navCtrl.navigateForward(`/color/${colorId}`);
   }
 
-  isIssue(tx): boolean {
-    // Issue if no input has the same colorId
-    return !tx.vin.some(input => input.prevout?.colorId === this.colorId);
+  // Wrapper methods for TokenOperationService using this.colorId
+  getOutputOperationType(tx): string {
+    return this.tokenOp.getOutputOperationType(tx, this.colorId);
+  }
+
+  getOutputOperationColor(tx): string {
+    return this.tokenOp.getOutputOperationColor(tx, this.colorId);
+  }
+
+  getInputOperationType(tx): string {
+    return this.tokenOp.getInputOperationType(tx, this.colorId);
+  }
+
+  getInputOperationColor(tx): string {
+    return this.tokenOp.getInputOperationColor(tx, this.colorId);
   }
 
   goToAddress(add = '') {

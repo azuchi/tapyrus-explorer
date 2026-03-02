@@ -234,6 +234,9 @@
               *ngIf="!!input.prevout.colorId && input.prevout.colorId === colorId"
             >
               <ion-col size="8" class="font-14 ellipsis">
+                <ion-badge [color]="getInputOperationColor(tx)"
+                  >{{ getInputOperationType(tx) }}</ion-badge
+                >
                 Color ID: {{ input.prevout.colorId | formatColorId }}
               </ion-col>
             </ion-row>
@@ -286,8 +289,8 @@
             </ion-row>
             <ion-row *ngIf="!!output.colorId && output.colorId === colorId">
               <ion-col size="8" class="font-14 ellipsis">
-                <ion-badge [color]="isIssue(tx) ? 'success' : 'tertiary'"
-                  >{{ isIssue(tx) ? "ISSUE" : "TRANSFER" }}</ion-badge
+                <ion-badge [color]="getOutputOperationColor(tx)"
+                  >{{ getOutputOperationType(tx) }}</ion-badge
                 >
                 Color ID: {{ output.colorId | formatColorId }}
               </ion-col>

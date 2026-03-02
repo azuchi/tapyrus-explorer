@@ -136,6 +136,10 @@
                           class="link-color cursor-pointer font-14 ellipsis"
                           (click)="goToCoin(vin.prevout.colorId)"
                         >
+                          <ion-badge
+                            [color]="tokenOp.getInputOperationColor(transaction, vin.prevout.colorId)"
+                            >{{ tokenOp.getInputOperationType(transaction, vin.prevout.colorId) }}</ion-badge
+                          >
                           Color ID: {{ vin.prevout.colorId | formatColorId }}
                         </ion-col>
                       </ion-row>
@@ -256,9 +260,8 @@
                           (click)="goToCoin(vout.colorId)"
                         >
                           <ion-badge
-                            [color]="isIssue(vout.colorId) ? 'success' : 'tertiary'"
-                            >{{ isIssue(vout.colorId) ? "ISSUE" : "TRANSFER"
-                            }}</ion-badge
+                            [color]="tokenOp.getOutputOperationColor(transaction, vout.colorId)"
+                            >{{ tokenOp.getOutputOperationType(transaction, vout.colorId) }}</ion-badge
                           >
                           Color ID: {{ vout.colorId | formatColorId }}
                         </ion-col>

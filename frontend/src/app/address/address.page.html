@@ -158,6 +158,11 @@
                 class="ion-margin-bottom link-color cursor-pointer font-14 ellipsis"
                 (click)="goToCoin(input.prevout?.colorId)"
               >
+                <ion-badge
+                  [color]="tokenOp.getInputOperationColor(tx, input.prevout?.colorId)"
+                  class="operation-badge"
+                  >{{ tokenOp.getInputOperationType(tx, input.prevout?.colorId) }}</ion-badge
+                >
                 Color ID: {{ input.prevout?.colorId | formatColorId }}
               </ion-col>
             </ion-row>
@@ -198,9 +203,9 @@
                 (click)="goToCoin(output.colorId)"
               >
                 <ion-badge
-                  [color]="isIssue(tx, output.colorId) ? 'success' : 'secondary'"
+                  [color]="tokenOp.getOutputOperationColor(tx, output.colorId)"
                   class="operation-badge"
-                  >{{ isIssue(tx, output.colorId) ? 'ISSUE' : 'TRANSFER' }}</ion-badge
+                  >{{ tokenOp.getOutputOperationType(tx, output.colorId) }}</ion-badge
                 >
                 Color ID: {{ output.colorId | formatColorId }}
               </ion-col>
