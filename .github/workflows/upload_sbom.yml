@@ -27,12 +27,13 @@ jobs:
           TAG=${{github.event.inputs.branch || github.ref_name}}
           echo "TAG=${TAG}" >> $GITHUB_ENV
 
-      - name: Install Trivy
-        run: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.62.1
-
       - name: Generate SBOM
-        run: trivy fs frontend/package-lock.json --format cyclonedx --output bom.json
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'frontend/package-lock.json'
+          format: 'cyclonedx'
+          output: 'bom.json'
 
       - name: Upload SBOM
         uses: DependencyTrack/gh-upload-sbom@v3
@@ -62,12 +63,13 @@ jobs:
           TAG=${{github.event.inputs.branch || github.ref_name}}
           echo "TAG=${TAG}" >> $GITHUB_ENV
 
-      - name: Install Trivy
-        run: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.62.1
-
       - name: Generate SBOM
-        run: trivy fs backend/package-lock.json --format cyclonedx --output bom.json
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'backend/package-lock.json'
+          format: 'cyclonedx'
+          output: 'bom.json'
 
       - name: Upload SBOM
         uses: DependencyTrack/gh-upload-sbom@v3
