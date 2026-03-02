@@ -138,7 +138,8 @@
                         >
                           <ion-badge
                             [color]="tokenOp.getInputOperationColor(transaction, vin.prevout.colorId)"
-                            >{{ tokenOp.getInputOperationType(transaction, vin.prevout.colorId) }}</ion-badge
+                            >{{ tokenOp.getInputOperationType(transaction,
+                            vin.prevout.colorId) }}</ion-badge
                           >
                           Color ID: {{ vin.prevout.colorId | formatColorId }}
                         </ion-col>
@@ -261,7 +262,8 @@
                         >
                           <ion-badge
                             [color]="tokenOp.getOutputOperationColor(transaction, vout.colorId)"
-                            >{{ tokenOp.getOutputOperationType(transaction, vout.colorId) }}</ion-badge
+                            >{{ tokenOp.getOutputOperationType(transaction,
+                            vout.colorId) }}</ion-badge
                           >
                           Color ID: {{ vout.colorId | formatColorId }}
                         </ion-col>

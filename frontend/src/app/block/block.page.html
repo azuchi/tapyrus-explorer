@@ -198,7 +198,8 @@
                     >
                       <ion-badge
                         [color]="tokenOp.getInputOperationColor(tx, input.prevout.colorId)"
-                        >{{ tokenOp.getInputOperationType(tx, input.prevout.colorId) }}</ion-badge
+                        >{{ tokenOp.getInputOperationType(tx,
+                        input.prevout.colorId) }}</ion-badge
                       >
                       Color ID: {{ input.prevout.colorId | formatColorId }}
                     </ion-col>
@@ -256,7 +257,8 @@
                   >
                     <ion-badge
                       [color]="tokenOp.getOutputOperationColor(tx, vout.colorId)"
-                      >{{ tokenOp.getOutputOperationType(tx, vout.colorId) }}</ion-badge
+                      >{{ tokenOp.getOutputOperationType(tx, vout.colorId)
+                      }}</ion-badge
                     >
                     Color ID: {{ vout.colorId | formatColorId }}
                   </ion-col>
